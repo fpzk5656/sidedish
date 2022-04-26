@@ -1,7 +1,7 @@
 package kr.codesquad.sidedish.controller;
 
-import kr.codesquad.sidedish.domain.DishType;
-import kr.codesquad.sidedish.domain.SideDishType;
+import kr.codesquad.sidedish.domain.Dish;
+import kr.codesquad.sidedish.domain.SideDish;
 import kr.codesquad.sidedish.exception.CustomException;
 import kr.codesquad.sidedish.response.CommonCode;
 import kr.codesquad.sidedish.response.CommonResponse;
@@ -80,10 +80,10 @@ public class ProductController {
 
 	private List<ProductDTO> loadListByType(String dishType, Optional<String> sideDishType) {
 		if (sideDishType.isPresent()) {
-			return productService.loadSideDishListByType(DishType.stringToEnum(dishType),
-				SideDishType.stringToEnum(sideDishType.get()));
+			return productService.loadSideDishListByType(Dish.stringToEnum(dishType),
+				SideDish.stringToEnum(sideDishType.get()));
 		}
-		return productService.loadDishListByType(DishType.stringToEnum(dishType));
+		return productService.loadDishListByType(Dish.stringToEnum(dishType));
 	}
 
 	private void checkForExistingId(Integer id) {
