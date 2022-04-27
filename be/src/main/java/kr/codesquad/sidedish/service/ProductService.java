@@ -3,10 +3,10 @@ package kr.codesquad.sidedish.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import kr.codesquad.sidedish.domain.DishType;
+import kr.codesquad.sidedish.domain.Dish;
 import kr.codesquad.sidedish.domain.Product;
 import kr.codesquad.sidedish.controller.RequestProduct;
-import kr.codesquad.sidedish.domain.SideDishType;
+import kr.codesquad.sidedish.domain.SideDish;
 import kr.codesquad.sidedish.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
