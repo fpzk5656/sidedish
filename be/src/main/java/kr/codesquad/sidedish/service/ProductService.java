@@ -22,13 +22,13 @@ public class ProductService {
 	public List<ProductDTO> findAll() {
 		return productRepository.findAll()
 			.stream()
-			.map(Product::createDTO)
+			.map(p -> ProductDTO.from(p))
 			.collect(Collectors.toList());
 	}
 
 	public List<ProductDTO> loadDishListByType(Dish dish) {
 		return productRepository.loadDishListByType(dish.getType()).stream()
-			.map(Product::createDTO)
+			.map(p -> ProductDTO.from(p))
 			.collect(Collectors.toList());
 	}
 
@@ -36,14 +36,13 @@ public class ProductService {
 		ServiceValidator.checkDishTypeIsSide(dish);
 		return productRepository.loadSideDishListByType(dish.getType(), sideDish.getType())
 			.stream()
-			.map(Product::createDTO)
+			.map(p -> ProductDTO.from(p))
 			.collect(Collectors.toList());
 	}
 
 	public ProductDTO findById(Integer id) {
-		return productRepository.findById(id)
-			.orElseThrow(() -> new CustomException(ErrorCode.PRODUCT_ID_NOT_ALLOWED)).
-			createDTO();
+		return ProductDTO.from(productRepository.findById(id)
+			.orElseThrow(() -> new CustomException(ErrorCode.PRODUCT_ID_NOT_ALLOWED)));
 	}
 
 	public void order(RequestProduct requestProduct) {
